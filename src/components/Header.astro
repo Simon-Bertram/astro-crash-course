@@ -1,0 +1,33 @@
+---
+import { Image } from "astro:assets";
+import logo from "../img/logo.svg";
+
+const links = [
+  { href: "/", text: "Home" },
+  { href: "about.html", text: "About" },
+  { href: "blog.html", text: "Blog" },
+];
+---
+
+<header class="bg-stone-700 mb-12">
+  <div class="h-20 container flex justify-between items-center">
+    <div class="align-middle">
+      <a href="/">
+        <Image src={logo} alt="Astro rocket logo" class="h-16 w-32" />
+      </a>
+    </div>
+    <nav>
+      <ul class="flex gap-7">
+        {
+          links.map((link) => (
+            <li class="py-3">
+              <a href={link.href} class="text-white">
+                {link.text}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>
