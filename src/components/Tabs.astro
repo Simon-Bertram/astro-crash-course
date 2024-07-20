@@ -1,0 +1,94 @@
+---
+const tabs = [
+  {
+    title: "NPM",
+    command: "$ npm create astro@latest",
+  },
+  {
+    title: "PNPM",
+    command: "$ pnpm create astro@latest",
+  },
+  {
+    title: "YARN",
+    command: "$ yarn create astro",
+  },
+];
+---
+
+<div class="tabs my-7 border border-black rounded-md">
+  <ul class="tabs-header flex gap-4 bg-slate-800 text-white rounded-md">
+    {
+      tabs.map((tab) => (
+        <li class="default-tab px-3 py-5 cursor-pointer">{tab.title}</li>
+      ))
+    }
+  </ul>
+  <ul class="tabs-content text-lg">
+    <li class="tab p-5 font-bold border bg-slate-300">
+      <code>$ npm create astro@latest</code>
+    </li>
+    <li class="tab p-5 font-bold border bg-slate-300">
+      <code>$ pnpm create astro@latest</code>
+    </li>
+    <li class="tab p-5 font-bold border bg-slate-300">
+      <code>$ yarn create astro</code>
+    </li>
+  </ul>
+</div>
+
+<script>
+  function createTabs(element: Element) {
+    // Select header and content elements
+    const header = element.querySelector(".tabs-header");
+    const content = element.querySelector(".tabs-content");
+    if (header === null || content === null) return;
+
+    // Get all tab headers and contents
+    const tab_headers: HTMLElement[] = [...header.children] as HTMLElement[];
+    const tab_contents: HTMLElement[] = [...content.children] as HTMLElement[];
+
+    // Hide all tab contents initially
+    tab_contents.forEach((tab) => {
+      if (tab instanceof HTMLElement) {
+        tab.style.display = "none";
+      }
+    });
+    let current_tab_index = -1;
+
+    // Function to set active tab
+    function setTab(index: number) {
+      // Deactivate current tab if it exists
+      if (current_tab_index > -1) {
+        tab_headers[current_tab_index].style.fontWeight = "400";
+        tab_headers[current_tab_index].style.color = "";
+        tab_contents[current_tab_index].style.display = "none";
+      }
+
+      // Activate new tab
+      tab_headers[index].style.fontWeight = "700";
+      tab_headers[index].style.color = "#A741FF";
+      tab_contents[index].style.display = "flex";
+      current_tab_index = index;
+    }
+
+    // Find default tab or use first tab
+    let default_tab_index = tab_headers.findIndex((tab) => {
+      return [...tab.classList].indexOf("default-tab") > -1;
+    });
+
+    default_tab_index = default_tab_index > -1 ? default_tab_index : 0;
+
+    // Set default tab
+    setTab(default_tab_index);
+
+    // Add click event listeners to all tab headers
+    tab_headers.forEach((tab, index) => {
+      tab.addEventListener("click", () => {
+        setTab(index);
+      });
+    });
+  }
+
+  // Run the function for all tab components when the script loads
+  [...document.querySelectorAll(".tabs")].forEach((tab) => createTabs(tab));
+</script>
