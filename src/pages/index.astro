@@ -6,31 +6,29 @@ import Tabs from "../components/Tabs.astro";
 ---
 
 <Layout title="Welcome to Astro.">
-  <main>
-    <Showcase showExtra={true} />
-    <Features />
-    <section class="page-content my-5">
-      <div class="container">
-        <h2 class="text-3xl font-bold mb-4 text-center">
-          Get Started With Astro
-        </h2>
-        <p class="mb-5">
-          Get a new Astro project up and running locally with our helpful
-          create-astro CLI wizard!
-        </p>
+  <Showcase showExtra={true} />
+  <Features />
+  <section class="page-content my-5">
+    <div class="container">
+      <h2 class="text-3xl font-bold mb-4 text-center">
+        Get Started With Astro
+      </h2>
+      <p class="mb-5">
+        Get a new Astro project up and running locally with our helpful
+        create-astro CLI wizard!
+      </p>
 
-        <Tabs />
+      <Tabs />
 
-        <h3 class="text-xl font-bold mb-3 text-center">Start Building</h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta ipsum
-          deserunt inventore ut voluptate, officia maiores repellat tenetur
-          praesentium omnis est ex tempora a necessitatibus reiciendis at et
-          dignissimos. Ipsam eius consequuntur cupiditate aperiam porro, esse
-          laborum impedit nesciunt ut voluptatum assumenda aspernatur libero
-          iusto error molestias dolorum, necessitatibus labore?
-        </p>
-      </div>
-    </section>
-  </main>
+      <h3 class="text-xl font-bold mb-3 text-center">Start Building</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta ipsum
+        deserunt inventore ut voluptate, officia maiores repellat tenetur
+        praesentium omnis est ex tempora a necessitatibus reiciendis at et
+        dignissimos. Ipsam eius consequuntur cupiditate aperiam porro, esse
+        laborum impedit nesciunt ut voluptatum assumenda aspernatur libero iusto
+        error molestias dolorum, necessitatibus labore?
+      </p>
+    </div>
+  </section>
 </Layout>
