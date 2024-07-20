@@ -1,11 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import { Image } from "astro:assets";
+import logos from "../img/deploy-logos.png";
+import logosSmall from "../img/deploy-logos-small.png";
 ---
 
 <Layout title="About Astro">
-  <section class="page-content">
+  <section class="page-content py-8">
     <div class="container">
-      <h2>About Astro</h2>
+      <h2 class="text-3xl mb-4">About Astro</h2>
       <p>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam, vel
         quas repudiandae optio voluptatibus dolore maxime sed nisi ad, quod
@@ -22,7 +26,7 @@ import Layout from "../layouts/Layout.astro";
         impedit.
       </p>
 
-      <div class="card">
+      <Card>
         <h3>Use the tools you already love</h3>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta ipsum
@@ -32,29 +36,31 @@ import Layout from "../layouts/Layout.astro";
           laborum impedit nesciunt ut voluptatum assumenda aspernatur libero
           iusto error molestias dolorum, necessitatibus labore?
         </p>
-      </div>
+      </Card>
 
-      <h3>Deploy to anywhere, even the edge</h3>
-      <img class="logos" src="img/deploy-logos.png" alt="" />
-      <img class="logos-small" src="img/deploy-logos-small.png" alt="" />
-      <p>
+      <h3 class="text-2xl mb-3">Deploy to anywhere, even the edge</h3>
+      <Image class="logos mx-auto hidden md:block" src={logos} alt="" />
+      <Image class="logos-small mx-auto md:hidden" src={logosSmall} alt="" />
+      <p class="my-5">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde doloribus,
         vel ipsum mollitia aliquid cumque commodi corrupti omnis ipsam sit
         earum, dolore quisquam harum qui non, quasi ea voluptatum debitis!
       </p>
 
-      <h3>Join our Community</h3>
+      <h3 class="text-2xl mb-3">Join our Community</h3>
       <p>
         Join us in the Astro Discord to share with and get help from an active,
         friendly community!
       </p>
 
-      <ul>
-        <li>💬 Say hi in our #introduce-yourself channel!</li>
-        <li>
+      <ul class="my-4">
+        <li class="mb-3">💬 Say hi in our #introduce-yourself channel!</li>
+        <li class="mb-3">
           💬 Ask our Support Squad a question in our #support-threads channel!
         </li>
-        <li>💬 Share what you've been working on in our #showcase channel!</li>
+        <li class="mb-3">
+          💬 Share what you've been working on in our #showcase channel!
+        </li>
       </ul>
     </div>
   </section>

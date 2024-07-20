@@ -20,7 +20,10 @@ const featuresData = [
   <div class="container sm:grid lg:grid-cols-3 gap-5">
     {
       featuresData.map((feature) => (
-        <Card title={feature.title} body={feature.body} dark={true} />
+        <Card dark={true}>
+          <h3 class="text-2xl mb-3">{feature.title}</h3>
+          <p>{feature.body}</p>
+        </Card>
       ))
     }
   </div>
