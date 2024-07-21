@@ -7,7 +7,7 @@ const { dark = false } = Astro.props as Props;
 ---
 
 <div
-  class={`card ${dark ? "dark:bg-primary dark:text-white" : ""} my-8 p-6 border shadow-md rounded-md`}
+  class={`card ${dark ? "dark:bg-primary dark:text-white" : ""} my-8 p-8 max-w-4xl border shadow-md rounded-md`}
 >
   <slot />
 </div>

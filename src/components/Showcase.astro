@@ -17,7 +17,7 @@ const {
 ---
 
 <section
-  class="h-auto bg-secondary bg-gradient-to-b from-primary to-slate-900/0 py-8"
+  class="h-auto bg-secondary bg-gradient-to-b from-primary to-slate-900/0 pt-8 pb-14"
 >
   <div class="showcase-text container text-white text-center">
     <h1 class="text-4xl sm:text-6xl font-bold my-16">{heading}</h1>
@@ -29,11 +29,13 @@ const {
     showExtra && (
       <div class="showcase-img container">
         <Image
+          loading="eager"
           class="mx-auto my-10 rounded-md hidden md:block"
           src={logos}
           alt=""
         />
         <Image
+          loading="eager"
           class="mx-auto my-10 rounded-md md:hidden"
           src={logosSmall}
           alt=""
@@ -42,7 +44,7 @@ const {
     )
   }
 
-  <p class="showcase-demo text-white container text-center my-12">
+  <!-- <p class="showcase-demo text-white container text-center my-12">
     <small>This is a demo website used for the YouTube crash course</small>
-  </p>
+  </p> -->
 </section>

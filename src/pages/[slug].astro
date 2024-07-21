@@ -1,0 +1,66 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+
+interface PostFrontmatter {
+  title: string;
+  slug: string;
+  date: string;
+  excerpt: string;
+  author: string;
+}
+
+interface Post {
+  frontmatter: PostFrontmatter;
+  content: string;
+}
+
+interface Path {
+  params: {
+    slug: string;
+  };
+  props: {
+    post: MarkdownInstance;
+  };
+}
+
+type MarkdownInstance = import("astro").MarkdownInstance<PostFrontmatter>;
+
+export async function getStaticPaths(): Promise<Path[]> {
+  const posts = (await Astro.glob("../posts/*.md")) as MarkdownInstance[];
+
+  return posts.map((post, index, array) => ({
+    params: {
+      slug: post.frontmatter.slug,
+    },
+    props: {
+      post,
+    },
+  }));
+}
+
+const { Content, frontmatter } = Astro.props.post;
+---
+
+<Layout title={frontmatter.title}>
+  <section>
+    <div class="container">
+      <Card
+        ><a
+          href="/blog"
+          class="px-4 py-2 font-bold text-white bg-primary rounded-full hover:bg-blue-600 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
+          >Go back</a
+        >
+        <h2 class="text-3xl my-5 font-bold text-center">{frontmatter.title}</h2>
+        <div class="prose prose-md mx-auto">
+          <p class="text-sm">
+            Written by <strong>{frontmatter.author}</strong> on {
+              frontmatter.date
+            }
+          </p>
+          <Content />
+        </div>
+      </Card>
+    </div>
+  </section>
+</Layout>
